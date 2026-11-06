@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/IPForensics.Api/IPForensics.Api.csproj" />
+    <Project Path="src/IPForensics.Core/IPForensics.Core.csproj" />
+    <Project Path="src/IPForensics.Infrastructure/IPForensics.Infrastructure.csproj" />
+  </Folder>
+</Solution>
