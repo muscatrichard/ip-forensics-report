@@ -1,0 +1,14 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+.idea/
+
+# Angular / Node
+node_modules/
+client/dist/
+client/.angular/
+
+# Secrets and local config
+.env
