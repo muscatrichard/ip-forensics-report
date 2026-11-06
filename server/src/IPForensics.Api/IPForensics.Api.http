@@ -1,0 +1,6 @@
+@IPForensics.Api_HostAddress = http://localhost:5272
+
+GET {{IPForensics.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
