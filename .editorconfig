@@ -9,3 +9,6 @@ indent_size = 4
 
 [*.{json,yml,yaml,ts,html,scss,css}]
 indent_size = 2
+
+[*.{csproj,slnx,props,targets,xml}]
+indent_size = 2
