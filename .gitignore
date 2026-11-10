@@ -13,3 +13,4 @@ client/.angular/
 
 # Secrets and local config
 .env
+/client/.vscode/
