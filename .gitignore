@@ -4,6 +4,7 @@ obj/
 *.user
 .vs/
 .idea/
+.vscode/
 
 # Angular / Node
 node_modules/
@@ -12,3 +13,4 @@ client/.angular/
 
 # Secrets and local config
 .env
+/client/.vscode/
