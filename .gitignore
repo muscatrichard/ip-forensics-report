@@ -4,6 +4,7 @@ obj/
 *.user
 .vs/
 .idea/
+.vscode/
 
 # Angular / Node
 node_modules/
