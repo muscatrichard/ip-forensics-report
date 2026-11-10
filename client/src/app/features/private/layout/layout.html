@@ -1,0 +1,30 @@
+<header>
+  <mat-toolbar class="toolbar">
+    <a class="brand" routerLink="/reports">IP Forensics</a>
+
+    <nav class="nav" aria-label="Main">
+      <a
+        matButton
+        routerLink="/reports"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+      >Reports</a
+      >
+      <a matButton routerLink="/generate" routerLinkActive="active" ariaCurrentWhenActive="page"
+      >Generate</a
+      >
+    </nav>
+
+    <span class="spacer"></span>
+
+    <button matButton type="button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Log out
+    </button>
+  </mat-toolbar>
+</header>
+
+<main class="content">
+  <router-outlet />
+</main>
