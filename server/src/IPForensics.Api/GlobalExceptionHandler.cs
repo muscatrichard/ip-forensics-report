@@ -23,10 +23,18 @@ public sealed class GlobalExceptionHandler : IExceptionHandler
                 StatusCodes.Status409Conflict, "Email already registered", exception.Message),
             InvalidCredentialsException => (
                 StatusCodes.Status401Unauthorized, "Invalid credentials", exception.Message),
+            InvalidIpAddressException => (
+                StatusCodes.Status400BadRequest, "Invalid IP address", exception.Message),
+            ExternalServiceException => (
+                StatusCodes.Status502BadGateway, "Lookup unavailable", exception.Message),
+            ReportDecryptionException => (
+                StatusCodes.Status500InternalServerError, "Report unreadable", "This report could not be decrypted."),
+            ReportNotFoundException => (
+                StatusCodes.Status404NotFound, "Report not found", exception.Message),
             _ => (
                 StatusCodes.Status500InternalServerError, "Unexpected error", "An unexpected error occurred.")
         };
-
+        
         if (status == StatusCodes.Status500InternalServerError)
         {
             _logger.LogError(exception, "Unhandled exception");
