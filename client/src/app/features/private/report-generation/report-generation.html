@@ -1,1 +1,34 @@
-<p>report-generation works!</p>
+<h1>Generate report</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate class="form">
+  <mat-form-field class="field">
+    <mat-label>IP address</mat-label>
+    <input
+      matInput
+      formControlName="ipAddress"
+      autocomplete="off"
+      spellcheck="false"
+      autocapitalize="off"
+    />
+    <mat-hint>A public IPv4 or IPv6 address, e.g. 8.8.8.8</mat-hint>
+    @if (form.controls.ipAddress.hasError('required')) {
+      <mat-error>IP address is required</mat-error>
+    } @else if (form.controls.ipAddress.hasError('server')) {
+      <mat-error>{{ form.controls.ipAddress.getError('server') }}</mat-error>
+    }
+  </mat-form-field>
+
+  <button matButton="filled" type="submit" class="submit" [disabled]="submitting()">
+    {{ submitting() ? 'Generating…' : 'Generate report' }}
+  </button>
+</form>
+
+@if (formError(); as message) {
+  <p class="error" role="alert">{{ message }}</p>
+}
+
+@if (report(); as report) {
+  <section class="result" aria-label="Generated report">
+    <app-ip-forensics-report [report]="report" />
+  </section>
+}
