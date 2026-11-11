@@ -1,1 +1,75 @@
-<p>ip-forensics-report works!</p>
+@let r = report() ;
+
+<header class="header">
+  <h2>{{ r.ipAddress }}</h2>
+  <p class="generated">Generated {{ r.createdAtUtc | date: 'd MMM y, HH:mm' }}</p>
+</header>
+
+<div class="sections">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <h3>Reputation metrics</h3>
+      <dl>
+        <div>
+          <dt>Abuse confidence score</dt>
+          <dd><app-abuse-score-label [score]="r.reputation.abuseConfidenceScore" /></dd>
+        </div>
+        <div>
+          <dt>Total reports (last 90 days)</dt>
+          <dd>{{ r.reputation.totalReports }}</dd>
+        </div>
+        <div>
+          <dt>Last reported</dt>
+          <dd>
+            @if (r.reputation.lastReportedAt; as lastReportedAt) {
+              {{ lastReportedAt | date: 'd MMM y, HH:mm' }}
+            } @else {
+              Never
+            }
+          </dd>
+        </div>
+      </dl>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <h3>Geolocation data</h3>
+      <dl>
+        <div>
+          <dt>Continent</dt>
+          <dd>{{ r.geolocation.continent }}</dd>
+        </div>
+        <div>
+          <dt>Country</dt>
+          <dd>{{ r.geolocation.country }}</dd>
+        </div>
+        <div>
+          <dt>Region</dt>
+          <dd>{{ r.geolocation.region }}</dd>
+        </div>
+        <div>
+          <dt>City</dt>
+          <dd>{{ r.geolocation.city }}</dd>
+        </div>
+      </dl>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <h3>Network attributes</h3>
+      <dl>
+        @for (attribute of networkAttributes(); track attribute.label) {
+          <div>
+            <dt>{{ attribute.label }}</dt>
+            <dd class="flag">
+              <mat-icon>{{ attribute.value ? 'check_circle' : 'cancel' }}</mat-icon>
+              {{ attribute.value ? 'Yes' : 'No' }}
+            </dd>
+          </div>
+        }
+      </dl>
+    </mat-card-content>
+  </mat-card>
+</div>

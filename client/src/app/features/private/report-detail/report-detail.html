@@ -1,1 +1,16 @@
-<p>report-detail works!</p>
+<a matButton routerLink="/reports" class="back">
+  <mat-icon>arrow_back</mat-icon>
+  All reports
+</a>
+
+<h1 class="visually-hidden">Report</h1>
+
+@if (report.isLoading()) {
+  <mat-progress-bar mode="indeterminate" aria-label="Loading report" />
+} @else if (report.hasValue()) {
+  <app-ip-forensics-report [report]="report.value()" />
+} @else if (errorMessage(); as message) {
+  <div class="error" role="alert">
+    <span>{{ message }}</span>
+  </div>
+}
