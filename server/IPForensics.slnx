@@ -4,4 +4,7 @@
     <Project Path="src/IPForensics.Core/IPForensics.Core.csproj" />
     <Project Path="src/IPForensics.Infrastructure/IPForensics.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/IPForensics.Tests/IPForensics.Tests.csproj" />
+  </Folder>
 </Solution>
