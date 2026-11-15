@@ -32,8 +32,8 @@ The API fails fast on startup if required configuration keys are missing or inva
 
 ```bash
 dotnet user-secrets set "ConnectionStrings:Default" "Server=localhost;Port=3306;Database=ip_forensics;User=ipf_app;Password=<MYSQL_PASSWORD>;GuidFormat=Binary16;" --project server/src/IPForensics.Api
-dotnet user-secrets set "Jwt:Key" "\$(openssl rand -base64 32)" --project server/src/IPForensics.Api
-dotnet user-secrets set "Encryption:Key" "\$(openssl rand -base64 32)" --project server/src/IPForensics.Api
+dotnet user-secrets set "Jwt:Key" "$(openssl rand -base64 32)" --project server/src/IPForensics.Api
+dotnet user-secrets set "Encryption:Key" "$(openssl rand -base64 32)" --project server/src/IPForensics.Api
 dotnet user-secrets set "AbuseIpDb:ApiKey" "<your_abuseipdb_key>" --project server/src/IPForensics.Api
 ```
 
